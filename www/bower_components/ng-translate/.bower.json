@@ -1,0 +1,26 @@
+{
+  "author": "Stephan Hoyer",
+  "name": "ng-translate",
+  "description": "Translation module for angularjs.",
+  "homepage": "https://github.com/StephanHoyer/ng-translate",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/StephanHoyer/ng-translate.git"
+  },
+  "main": "./translate.min.js",
+  "dependencies": {
+    "angular": ">= 1.0.4"
+  },
+  "devDependencies": {
+    "angular-mocks": ">= 1.0.4"
+  },
+  "_release": "29a0f26d47",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "29a0f26d471fd9c8c5c8ff1973fe294d6e2fc845"
+  },
+  "_source": "https://github.com/StephanHoyer/ng-translate.git",
+  "_target": "*",
+  "_originalSource": "ng-translate"
+}

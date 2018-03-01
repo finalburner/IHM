@@ -1,0 +1,325 @@
+<div id="sidebar" class ="col col-20 " style="background-color: #F7F7F7 !important;min-width:248px!important;z-index:100;height:100vh!important">
+
+      <div class="row titre_user">
+        Recherche Simple
+      </div>
+
+       <div class="row">
+           <label class="item item-input " style="width:100%;" >
+           <i class="icon ion-search placeholder-icon"></i>
+           <input style="height:15px;padding: 0 30px 0 0 ;" type="text" placeholder="Recherche"
+            ng-model="search"  ng-click="search =''"  ng-model-options="{ debounce: 100 }">
+           </label>
+        </div>
+
+       <div class="row" style="padding:10px 0 0 5px !important;background-color='#F7f7f7';"  >
+             <ion-content style="margin: 102px 0 0 0px;max-height:88vh!important;width:250px !important;" overflow-scroll="true" >
+
+                     <ion-list ng-if="tab">
+                       <div collection-repeat="item in tab | filter:search |  unique:'CTH_NUM_CT' track by $index "  style="min-width:400px!padding:0!important" item-height="40px"   >
+                         <div class="item row " ng-click="gotoFIC(item.CTH_NUM_CT)" >
+                            <div class="col " style="padding:5px 0 5px 10px;font-weight:500;">CT {{item.CTH_NUM_CT}} </div>
+                            <!-- <div class="col col-30"></div> -->
+                          </div>
+                        </div>
+                     </ion-list>
+
+            </ion-content>
+
+       </div>
+</div>
+
+
+<!-- Container Flex -->
+
+<ion-content ng-show="showID" class="container-flex "  ng-init="initialisation()" md-theme="blue">
+
+  <button ng-show="searchbar" id="sidebar-btn" class="button button-float-search" ng-click="showSeachBar()">
+        <i class="icon ion-search"></i>
+    </button>
+
+<!-- Description générale -->
+  <div class= "row-flex" style = "padding-top:7px !important">
+    <div class="col-xs-10 .col-lg-12">
+      <div class="panel panel-default flex-col">
+        <div class="panel-heading">
+          <p class = "panel-heading-title" >CT{{ DATA.CTH_NUM_CT }} {{ DATA.CTH_ADRESSE }} {{ DATA.CTH_CODE_POSTAL }} {{ DATA.CTH_VILLE }}</p></div>
+          <div class="panel-body flex-grow">
+            <table class="table" >
+              <thead>
+                 <tr >
+                   <th class="colonne">Designation CT</th> <!-- Non modifiable -->
+                   <th class="colonne">Numéro PT</th> <!-- Non modifiable -->
+                   <th class="colonne">Puissance totale intallée(kW)</th> <!-- Modifiable N1-->
+                   <th class="colonne">Contrat d'objectif</th> <!-- Modifiable N1-->
+                   <th class="colonne">Type Energie Principale</th> <!-- Modifiable N1-->
+                   <th class="colonne">Etat administratif</th> <!-- Modifiable N1-->
+                   <th class="colonne">Type CT</th> <!-- Modifiable N1-->
+                   <th class="colonne">CT supervisé</th> <!-- Modifiable N1-->
+                   <th class="colonne">CT signalé</th> <!-- Modifiable N1-->
+                 </tr>
+               </thead>
+                <tbody>
+                  <tr>
+                    <td class="data"><p>{{ DATA.CTH_DESC_CT }}</p></td>
+                    <td class="data"><strong>{{ DATA.CTH_NUM_PT }}</strong></td>
+                    <td ng-if="edition == 0" class="data" ><p>{{ DATA.CTH_PUISSANCE_CT }}</p></td>
+                    <td ng-if="edition == 1" class="data"><input ng-readonly="!Droits.CTPTI" class="input" type="text" ng-model="DATA.CTH_PUISSANCE_CT" name = "puissance"></input></td>
+                    <!-- <td><input class="input"type="text" placeholder ="{{ DATA.CTH_CTR_ID }}" name = "contrat"></input>    </td> -->
+                    <td ng-if="edition == 0" class="data"><p>{{ DATA.CTR_LBL }}</p></td>
+                    <td ng-if="edition == 1" class="data">
+                    <select ng-disabled="!Droits.CTCO" class="selectpicker" ng-model="DATA.CTR_COD" ng-change="con(DATA)">
+                        <option ng-repeat="item in Contrat track by $index" value="{{item.CTR_COD}}">{{item.CTR_LBL}}</option>
+                        </select>
+                    </td>
+                    <td ng-if="edition == 0" class="data"><p>{{ DATA.NRG_LBL }}</p></td>
+                    <td ng-if="edition == 1" class="data">
+                    <select ng-disabled="!Droits.CTTEP" class="selectpicker" ng-model="DATA.NRG_COD" ng-change="con(DATA)">
+                        <option ng-repeat="item in Energies track by $index" value="{{item.NRG_COD}}">{{item.NRG_LBL}}</option>
+                        </select>
+                    </td>
+                    <!-- <td><input type="text" placeholder ="{{ stat }}" name = "statut"></input></td> -->
+                    <td ng-if="edition == 0" class="data"><p>{{ DATA.STA_LBL }}</p></td>
+                    <td ng-if="edition == 1" class="data">
+                      <select ng-disabled="!Droits.CTSA" class="selectpicker" ng-model="DATA.STA_COD" ng-change="con(DATA)">
+                          <option ng-repeat="item in Status track by $index" value="{{item.STA_COD}}">{{item.STA_LBL}}</option>
+                      </select>
+                    </td>
+                    <!-- <td><input type="text" placeholder ="{{ typ }}" name = "typ"></input></td> -->
+                    <td ng-if="edition == 0" class="data"> <p>{{ DATA.CTT_LBL }}</p></td>
+                    <td ng-if="edition == 1" class="data">
+                      <select ng-disabled="!Droits.CTT" class="selectpicker" ng-model="DATA.CTT_COD" ng-change="con(DATA)">
+                          <option ng-repeat="item in Type track by $index" value="{{item.CTT_COD}}">{{item.CTT_LBL}}</option>
+                      </select>
+                      </td>
+
+                    <!-- <td><input type="text" placeholder ="{{ super }}" name = "supervise"></input></td> -->
+                    <td ng-if="edition == 0" class="data">
+                      <p ng-if="DATA.CTH_SUPERVISE == 'true'">Oui</p>
+                      <p ng-if="DATA.CTH_SUPERVISE == 'false'">Non</p>
+                    </td>
+
+                    <td ng-if="edition == 1" class="data">
+                    <select ng-disabled="!Droits.CTSP"  class="selectpicker" ng-model="DATA.CTH_SUPERVISE" ng-change="con(DATA)">
+                      <option value = 'true' >Oui</option>
+                      <option value = 'false' >Non</option>
+                    </td>
+                    <!-- <td><input type="text" placeholder ="{{ signale}}" name = "signale"></input></td> -->
+                    <td ng-if="edition == 0" class="data"><p>{{ DATA.CTH_SIGNALE }}</p></td>
+                    <td ng-if="edition == 1" class="data">
+                      <select ng-disabled="!Droits.CTSG" class="selectpicker" ng-model="DATA.CTH_SIGNALE" ng-change="con(DATA)">
+                          <option ng-repeat="item in CTH_SIGNALE track by $index" value="{{item.CTH_SIGNALE}}">{{item.CTH_SIGNALE}}</option>
+                      </select>
+
+                    </td>
+                  </tr>
+
+                </tbody>
+                <thead>
+                    <tr>
+                    <th class="colonne" colspan=2>Date prévisionnelle de révision</th> <!-- Modifiable N1-->
+                    <th class="colonne" colspan=2>Remarque technique sur la prochaine rénovation</th> <!-- Modifiable N1-->
+                    <th class="colonne" colspan=2>Date de la dernière rénovation/ Date d'ouverture</th> <!-- Modifiable N1-->
+                    <th class="colonne" colspan=3>Description de la dernière rénovation</th> <!-- Modifiable N1-->
+                    </tr>
+                  </thead>
+                  <tbody>
+                     <tr>
+                       <td ng-if="edition == 0" class="data" colspan=2><p>{{ DATA.CTH_DAT_PREV_RENOV }}</p></td>
+                       <td ng-if="edition == 0" class="data" colspan=2><p>{{ DATA.CTH_RMQ_PREV_RENOV }}</p></td>
+                       <td ng-if="edition == 0" class="data" colspan=2><p>{{ DATA.CTH_DAT_DER_RENOV }}</p></td>
+                       <td ng-if="edition == 0" class="data" colspan=3><p>{{ DATA.CTH_RMQ_DER_RENOV }}</p></td>
+                       <td ng-if="edition == 1" class="data" colspan=2><input class="input" ng-readonly="!Droits.CTDPR" type="text" placeholder ="{{DATA.CTH_DAT_PREV_RENOV}}" ng-model="DATA.CTH_DAT_PREV_RENOV"></input></td>
+                       <td ng-if="edition == 1" class="data" colspan=2><input class="input" ng-readonly="!Droits.CTRTPR" type="text" placeholder ="{{DATA.CTH_RMQ_PREV_RENOV}}" ng-model="DATA.CTH_RMQ_PREV_RENOV"></input></td>
+                       <td ng-if="edition == 1" class="data" colspan=2><input class="input" ng-readonly="!Droits.CTDTDR" type="text" placeholder ="{{DATA.CTH_DAT_DER_RENOV}}" ng-model="DATA.CTH_DAT_DER_RENOV"></input></td>
+                       <td ng-if="edition == 1" class="data" colspan=3><input class="input" ng-readonly="!Droits.CTDDR" type="text" placeholder ="{{DATA.CTH_RMQ_DER_RENOV}}" ng-model="DATA.CTH_RMQ_DER_RENOV"></input></td>
+                     </tr>
+                  </tbody>
+            </table>
+          </div>
+      </div>
+    </div>
+</div>
+
+<!-- Equipements -->
+  <div class= "row-flex" style="padding-top:7px!important">
+      <div class="col-xs-10 .col-lg-12">
+        <div class="panel panel-default flex-col">
+          <div class="panel-heading" >
+            <p class = "panel-heading-title " >Equipements</p>
+            <button ng-if="edition == 1" class="button button-float" ng-click="ADD_EQP()" ng-disabled="!Droits.CTAJEQ">
+                  <i class="icon ion-plus"></i>
+              </button>
+         </div>
+          <!-- <md-button type="button" class="btn btn-default btn2" ng-click="ADD_EQP()">Ajouter</md-button>  </div> -->
+            <div class="panel-body flex-grow" >
+              <table class="table" fixed-header style="border-collapse:collapse;height:200px!important;overflow:scroll;">
+                <thead >
+                 <tr class="colonne">
+                   <th >Equipement </th>
+                   <th >N°</th>
+                   <th >Adresse</th>
+                   <th >Contact sur site</th>
+                   <th >N° de téléphone</th>
+                   <th >Email</th>
+                   <th >Type d'équipement</th>
+                   <th >Service fonc.</th>
+                   <th >Service gest.</th>
+                   <th >Collectivité</th>
+                   <th >Cap. confort</th>
+                  </tr>
+                </thead>
+                <tbody>
+                      <tr class='CaseVide' ng-if="Eqpt.length == 0 "> </tr>
+
+                      <tr  ng-if="edition == 0" ng-repeat ="item in Eqpt track by $index" >
+                      <td class="data">{{item.EQP_DESIGNATION}}</td>
+                      <td class="data"><strong>{{ item.EQP_NUM}}</strong></td>
+                      <td class="data">{{ item.EQP_ADRESSE }}</td>
+                      <td class="data">{{ item.EQP_CONTACT }}</td>
+                      <td class="data">{{ item.EQP_CONTACT_TEL }}</td>
+                      <td class="data">{{ item.EQP_CONTACT_MAIL }}</td>
+                      <td class="data">{{ item.EQT_DESIGNATION }}</td>
+                      <td class="data">{{ item.EQP_SERVICE_FON }}</td>
+                      <td class="data">{{ item.EQP_SERVICE_GES }}</td>
+                      <td class="data">{{ item.COL_LBL }}</td>
+                      <td class="data">{{ item.EQP_NB_CAPTEUR }}</td>
+                      </tr>
+
+                      <tr  ng-if="edition == 1 && item.OPERATION != 'DELETE'" context-menu="menuOptions_EQP" ng-repeat ="item in Eqpt track by $index" ng-click="set_item(item)" >
+                      <td class="data">{{item.EQP_DESIGNATION}}</td>
+                      <td class="data"><strong>{{ item.EQP_NUM}}</strong></td>
+                      <td class="data">{{ item.EQP_ADRESSE }}</td>
+                      <td class="data"><input class="input" type="text" ng-readonly="!Droits.CTCSS" ng-blur="EQP_EDIT(item)" placeholder ="{{ item.EQP_CONTACT }}" ng-model="item.EQP_CONTACT" ></input></td>
+                      <td class="data"><input class="input" type="text" ng-readonly="!Droits.CTNT" ng-blur="EQP_EDIT(item)" placeholder ="{{ item.EQP_CONTACT_TEL }}" ng-model="item.EQP_CONTACT_TEL" ></input></td>
+                      <td class="data"><input class="input" type="text" ng-readonly="!Droits.CTML" ng-blur="EQP_EDIT(item)" placeholder ="{{ item.EQP_CONTACT_MAIL }}" ng-model="item.EQP_CONTACT_MAIL" ></input></td>
+                      <td class="data">{{ item.EQT_DESIGNATION }}</td>
+                      <td class="data">{{ item.EQP_SERVICE_FON }}</td>
+                      <td class="data">{{ item.EQP_SERVICE_GES }}</td>
+                      <td class="data">{{ item.COL_LBL }}</td>
+                      <td class="data">{{ item.EQP_NB_CAPTEUR }}</td>
+                      </tr>
+
+                  </tbody>
+              </table>
+          </div>
+      </div>
+     </div>
+   </div>
+
+   <!-- Exploitants du Centre Thermique -->
+   <div class= "row-flex" style="padding-top:7px!important">
+       <div class="col-xs-10 .col-lg-12">
+         <div class="panel panel-default flex-col">
+           <div class="panel-heading">
+             <p class = "panel-heading-title " >Exploitants</p></div>
+               <div class="panel-body flex-grow">
+                 <table class="table" fixed-header style=" border-collapse: collapse;height:140px!important;overflow:scroll">
+                   <thead>
+                     <tr>
+                       <th class="colonne">Rôle</th> <!-- Modifiable N0-->
+                       <th class="colonne">Périmètre Exploitation</th> <!-- Modifiable N0-->
+                       <th class="colonne">Groupe Exploitation</th> <!-- Modifiable N0-->
+                       <th class="colonne">Resp. technique</th> <!-- Modifiable N0-->
+                       <th class="colonne">Resp. administratif</th> <!-- Modifiable N0-->
+                       <th class="colonne">Tél. Jour</th> <!-- Modifiable N0-->
+                       <th class="colonne">Tél Permanence/Ast.</th> <!-- Modifiable N0-->
+                       <th class="colonne">Code Entreprise</th> <!-- Modifiable N0-->
+                     </tr>
+                   </thead>
+                   <tbody>
+                    <tr class='CaseVide' ng-if="Exp.length == 0 "> </tr>
+                     <tr ng-repeat ="item in Exp track by $index" ng-click="log(item)" >
+                       <td class="data">{{item.RXP_LBL}}</td>
+                       <td ng-if="edition == 0" class="data">{{item.GRE_PERIMETRE_COD}}</td>
+                       <td ng-if="edition == 1" class="data">
+                        <select ng-disabled="!Droits['{{item.Droit}}']" class="selectpicker" ng-model="item.GRE_PERIMETRE_COD" ng-change="Clear_Resp(item.RXP_COD)">
+                           <option ng-repeat="Grp in Grp_Exploitation | unique:'PER' track by $index"value="{{Grp.PER}}">{{Grp.PER}}<option>
+                            <option value="0">Default</option>
+                         <select>
+                       </td>
+                       <!-- <td><input class="input" type="text" placeholder ="{{ item.GRE_EXP_COD }}" ng-model="item.GRE_EXP_COD" name = "groupe"</input></td> -->
+                       <td ng-if="edition == 0" class="data">{{item.GRE_NOM}}</td>
+                       <td ng-if="edition == 1" class="data">
+                           <select ng-disabled="!Droits['{{item.Droit}}']" class="selectpicker" ng-model="item.GRE_EXP_COD" ng-change="Full_Resp(item.GRE_EXP_COD)" >
+                           <option ng-repeat="Grp in Grp_Exploitation | filter:{ PER : item.GRE_PERIMETRE_COD } track by $index" value="{{Grp.COD}}">{{Grp.GRP}}<option>
+                         <select>
+                       </td>
+                       <td ng-if="edition == 0" class="data">{{item.GRE_RESP_TECHNIQUE}}</td>
+                       <td ng-if="edition == 0" class="data">{{item.GRE_RESP_ADM}}</td>
+                       <td ng-if="edition == 0" class="data">{{item.GRE_CONTACT_HO}}</td>
+                       <td ng-if="edition == 0" class="data">{{item.GRE_CONTACT_HNO}}</td>
+                       <td ng-if="edition == 0" class="data">{{item.GRE_REF_INTERNE}}</td>
+                       <td ng-if="edition == 1" class="data"><input ng-readonly="!Droits['{{item.Droit}}']" class="input" type="text" placeholder ="{{ item.GRE_RESP_TECHNIQUE }}" ng-model="item.GRE_RESP_TECHNIQUE" name = "resptech" ></input></td>
+                       <td ng-if="edition == 1" class="data"><input ng-readonly="!Droits['{{item.Droit}}']" class="input" type="text" placeholder ="{{ item.GRE_RESP_ADM }}" ng-model="item.GRE_RESP_ADM" name = "respadm" ></input></td>
+                       <td ng-if="edition == 1" class="data"><input ng-readonly="!Droits['{{item.Droit}}']" class="input" type="text" placeholder ="{{ item.GRE_CONTACT_HO }}" ng-model="item.GRE_CONTACT_HO" name = "ho" ></input></td>
+                       <td ng-if="edition == 1" class="data"><input ng-readonly="!Droits['{{item.Droit}}']" class="input" type="text" placeholder ="{{ item.GRE_CONTACT_HNO }}" ng-model="item.GRE_CONTACT_HNO" name = "hno" ></input></td>
+                       <td ng-if="edition == 1" class="data"><input ng-readonly="!Droits['{{item.Droit}}']" class="input" type="text" placeholder ="{{ item.GRE_REF_INTERNE  }}" ng-model="item.GRE_REF_INTERNE" name = "refint" ></input></td>
+                    </tr>
+                   </tbody>
+                 </table>
+             </div>
+         </div>
+       </div>
+   </div>
+
+<!-- Prestations / Maintenance -->
+  <div class= "row-flex" style="padding-top:7px!important">
+    <div class="col-xs-10 .col-lg-12">
+     <div class="panel panel-default flex-col">
+       <div class="panel-heading">
+         <p class = "panel-heading-title" >Prestations/Maintenance</p></div>
+         <div class="panel-body flex-grow">
+           <table class="table">
+            <thead>
+               <tr>
+               <th class="colonne">P1 Fourniture énergie primaire</th>
+               <th class="colonne">P2 Conduite installation et travaux petit entretien</th>
+               <th class="colonne">P3 Gros entretien et renouvellement matériel</th>
+               <th class="colonne">P4 Travaux  du propriétaire</th>
+               </tr>
+             </thead>
+             <tbody style='min-height:100px!important'>
+                <tr >
+                  <td ng-if="edition == 0">{{::DATA.CTH_P1}}</td>
+                  <td ng-if="edition == 0">{{::DATA.CTH_P2}}</td>
+                  <td ng-if="edition == 0">{{::DATA.CTH_P3}}</td>
+                  <td ng-if="edition == 0">{{::DATA.CTH_P4}}</td>
+                  <td ng-if="edition == 1"><input ng-readonly="!Droits.CTP1" class="input" type="text" placeholder ="{{ ::DATA.CTH_P1 }}"  ng-model="DATA.CTH_P1"></input></td>
+                  <td ng-if="edition == 1"><input ng-readonly="!Droits.CTP2" class="input" type="text" placeholder ="{{ ::DATA.CTH_P2 }}"  ng-model="DATA.CTH_P2"></input></td>
+                  <td ng-if="edition == 1"><input ng-readonly="!Droits.CTP3" class="input" type="text" placeholder ="{{ ::DATA.CTH_P3 }}"  ng-model="DATA.CTH_P3"></input></td>
+                  <td ng-if="edition == 1"><input ng-readonly="!Droits.CTP4" class="input" type="text" placeholder ="{{ ::DATA.CTH_P4 }}"  ng-model="DATA.CTH_P4"></input></td>
+                </tr>
+              </tbody>
+          </table>
+         </div>
+     </div>
+   </div>
+ </div> <!-- Fin row-flex -->
+
+<!-- Commentaires -->
+ <div class= "row-flex" style="padding:7px 0 10px 0 !important;">
+    <div class="col-lg-10">
+      <div class="panel panel-default flex-col">
+        <div class="panel-heading">
+          <p class = "panel-heading-title">Commentaires</p></div>
+          <div class="panel-body d-flex flex-row" ng-style="DATA.CTH_COM_ETAT_CT"  >
+          <div class="p-2 data" style="padding-left:10px!important">
+            {{ DATA.CTH_UPD_DTH | date: 'dd-MM-yyyy @ HH:mm' : 'GMT' }} {{s1}} {{DATA.CTH_COM_AUTEUR_NOM}} {{s2}} {{DATA.CTH_COM_ETAT_CT}}
+          </div>
+          <div class="p-2">
+                  <input ng-readonly="!Droits.CTCE"  ng-model="DATA.CTH_COM_ETAT_CT2" ng-maxlength="250"  style="padding-left:10px;width:100%;" >  </input>
+
+          </div>
+           <!-- {{ commentaire }} <! ?? affichage commentaire précédent ?? -->
+          </div>
+
+      </div>
+    </div>
+      <div class="col-lg-2" style="padding:20px 0 0 30px!important">
+          <button class = "btn btn1" type = "button" ng-click = "UPDATE()">Valider</button>
+      </div>
+
+ </div>
+
+</ion-content>

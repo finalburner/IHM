@@ -1,0 +1,38 @@
+<md-dialog  >
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <p class= "poptitle">Ajouter un équipement</p>
+        <span flex></span>
+        <!-- <md-button class="md-icon-button" >
+
+        </md-button> -->
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content" style="padding:0!important">
+
+    <div ui-i18n="fr" class="col"  style="height:500px!important;width:1000px!important;max-height: 800px!important;max-width:1100px!important;padding :0;" >
+      <!-- <input ng-model ="tmp_event.start._i"/> -->
+
+
+        <div  data-ng-if="!refresh" ui-grid-cellnav ui-grid-resize-columns ui-grid-move-columns ui-grid-selection style="height:500px!important" id="grid1" ui-grid="gridOptions_eqp" class="grid_eqp"></div>
+
+
+    </div>
+
+
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <!-- <md-button ng target="_blank" md-autofocus>
+        More on Wikipedia
+      </md-button> -->
+      <span flex></span>
+      <md-button ng-click="Close_ADD()">Annuler</md-button>
+      <md-button md-autofocus ng-click="ADD_NEW_EQP()" ng-disabled="Selected_Eqp.length == 0">Ajouter</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

@@ -1,0 +1,31 @@
+{
+  "name": "IHM",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "NC",
+  "license": "ISC",
+  "dependencies": {
+    "activedirectory": "^0.7.2",
+    "ad": "^0.3.2",
+    "angular-scrollable-table": "^1.1.2",
+    "body-parser": "^1.17.2",
+    "core-js": "^2.5.1",
+    "cors": "^2.8.4",
+    "express": "^4.15.3",
+    "http-server": "^0.10.0",
+    "live-server": "^1.2.0",
+    "mssql": "^4.0.4",
+    "ng-csv": "^0.3.6"
+  },
+  "devDependencies": {
+    "csv-js": "^1.0.0"
+  },
+  "pkg": {
+    "scripts": "build/**/*.js",
+    "assets": "www/**/*"
+  }
+}

@@ -1,0 +1,103 @@
+<div class="row" style="padding:0" ng-init ="get_admin()" style="background-color:#FFFFFF!important">
+
+  <div class ="col " style="background-color: #F7F7F7 !important;min-width:400px!important">
+
+    <div class="row titre_user">
+      Utilisateurs et profils
+    </div>
+
+     <div class="row">
+
+     <label class="item item-input " style="width:100%;" >
+     <i class="icon ion-search placeholder-icon"></i>
+     <input style="height:15px;padding: 0 30px 0 0 ;" type="text" placeholder="Recherche"
+      ng-model="search"  ng-click="search =''"  ng-model-options="{ debounce: 600 }">
+     </label></div>
+
+       <div class="row" flex style="padding:10px 0 0 5px !important;background-color='#F7f7f7';">
+             <!-- <ion-content style="margin: 50px 0 0 10px; max-height:740px;width:350px !important;" > -->
+             <!-- <ion-scroll  style="width:500px!important;max-height:740px!important"> -->
+             <md-content  flex style="min-width:380px!important;max-height:90vh!important">
+               <ion-list style= "padding:0; " >
+                   <ion-item   ng-style="isUserSelected(item) && {'background-color': '#CBDDFF'}"
+                    ng-repeat="item in Users | filter: search track by item.UTI_LOGIN+$index "
+                    class="item row"  style="padding:0px!important;height:100px!important;width:350x!important"
+                    context-menu="menuOptions"  ng-click="Select_User(item)"  >
+
+                    <!-- <div class="col col-30" style="padding:14px 0 0 10px !important;">
+                    {{item.UTI_NOM}} {{item.UTI_PRENOM}}
+
+                    </div> -->
+
+                    <div class="col " style="padding:14px 0 0 10px !important;">
+                    <div class="row" style="padding:0 0 0px 0;font-weight:500">{{item.UTI_NOM}} {{item.UTI_PRENOM}}</div>
+                    <div class="row" ng-if="item.UTI_MAIL" style="padding:5px 0 5px 0;">{{item.UTI_MAIL}}</div>
+                    <div class="row" style="padding:5px 0 5px 0;">{{get_profil(item.UTI_UPR_ID)}}</div>
+
+                    </div>
+
+                    <div class="col col-20" style="padding:9px 5px 0 0 !important;">
+                      <div class="row">
+                        <div  ng-if="item.UTI_HAB_ASTREINTE" style = "color:#FFFFFF;background-color:#4A4A4A;font-size:10px;padding:0px 5px 0 5px;float: right!important;text-align: right;clear:right;right : 51px!important">ASTREINTE</div>
+                      </div>
+                      <div class="row">
+                        <div  ng-if="item.UTI_ACTIF" ng-style="!item.UTI_HAB_ASTREINTE && {'margin-top' : '0'} || item.UTI_HAB_ASTREINTE && {'margin-top' : '5px'}  " style = "right:0!important;margin:5px auto!important;color:#FFFFFF;background-color:#4EB371;font-size:10px;padding:0px 5px 0 5px;">ACTIF</div>
+                      </div>
+                    </div>
+
+                </ion-item>
+              </ion-list>
+            </md-content>
+       </div>
+<!--
+       <div class="row">
+         <button style="margin:0 0 0 20px!important "class=" btn" ng-click="Add_EG()">Ajouter un utilisateur</button>
+       </div> -->
+
+
+  </div>
+
+  <div class ="col " style="background-color: #F7F7F7 !important;min-width:400px!important">
+
+    <div class="row titre_user">
+      Groupes d'exploitation
+    </div>
+
+    <div class="row">
+                <label class="item item-input " style="width:100%;" >
+                <i class="icon ion-search placeholder-icon"></i>
+                <input style="height:15px;padding: 0 30px 0 0 ;" type="text" placeholder="Recherche"
+                 ng-model="search2"  ng-click="search2 =''"> </label>
+    </div>
+
+    <div class="row"  style="padding:10px 0 0 5px;" >
+
+      <md-content  style="min-width:380px!important;max-height:90vh!important">
+        <ion-list  style= "padding:0; " >
+          <ion-item class="row" ng-if="USER_GROUP.length == 0" style="padding:10px 0 10px 10px;font-size:14px" style="min-width:250px;">
+            Sélectionnez un utilisateur
+          </ion-item>
+            <ion-item   ng-style="isUserSelected(item) && {'background-color': '#CBDDFF'}"
+             ng-repeat="item in USER_GROUP | filter: search2 track by $index "
+             class="item row"  style="padding:0px!important;height:40px!important;width:350x!important"  >
+
+             <div class="col col-90" style="padding:8px 0 0 10px !important;">{{::item.UGE_GRE_NOM}}</div>
+             <div class="col col-10" style="padding:8px 5px 0 0 !important;">
+               <!-- <md-checkbox ng-model="item.UGE_AUTORIZED"ng-checked= "item.UGE_AUTORIZED" ng-click="item.UGE_AUTORIZED=!item.UGE_AUTORIZED;SET_AUTORIZED(item)" ></md-checkbox> -->
+                <!-- <input type="checkbox" ng-model="item.UGE_AUTORIZED" > -->
+                <md-checkbox class="indigo" ng-disabled ="!Droits.FADMGGU" ng-checked="item.UGE_AUTORIZED" ng-click="item.UGE_AUTORIZED=!item.UGE_AUTORIZED;SET_AUTORIZED(item)" class="indigo" style="margin:0;"></md-checkbox>
+
+             </div>
+
+         </ion-item>
+       </ion-list>
+     </md-content>
+
+   </div>
+
+  </div>
+
+  <div class="col col-60">
+
+ </div>
+</div>

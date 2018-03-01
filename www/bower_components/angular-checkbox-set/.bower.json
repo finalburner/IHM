@@ -1,0 +1,14 @@
+{
+  "name": "angular-checkbox-set",
+  "homepage": "https://github.com/Luxiyalu/angular-checkbox-set",
+  "_release": "f9f66f424c",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "f9f66f424c0220ce1f8c93328fe8cd2a712f464f"
+  },
+  "_source": "https://github.com/Luxiyalu/angular-checkbox-set.git",
+  "_target": "*",
+  "_originalSource": "angular-checkbox-set",
+  "_direct": true
+}

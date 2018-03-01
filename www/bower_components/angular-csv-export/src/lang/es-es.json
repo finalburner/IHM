@@ -1,0 +1,16 @@
+{
+    "form" : {
+        "txtTitle" : "Archivo de configuración de exportación '.csv'",
+        "txtWithLabel" : "Incluya el título en la primera línea.",
+        "txtWithQuotes" : "Incluya comillas dobles en los campos.",
+        "txtSeparator" : "Registros divisor",
+        "txtPreview" : "Vista previa:",
+        "btnDoCancel" : "Cancelar",
+        "btnDoDownload" : "Exportación",
+        "btnDownloadFile" : "Descarga de archivos"
+    },
+    "samplePage" : {
+        "txtTitle" : "Directiva para exportar archivos CSV.",
+        "txtDesc" : "Haga clic para realizar una exportación de los datos en la memoria."
+    }
+}

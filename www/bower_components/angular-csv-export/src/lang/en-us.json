@@ -1,0 +1,16 @@
+{
+    "form" : {
+        "txtTitle" : "File export configuration",
+        "txtWithLabel" : "Add title at the first row.",
+        "txtWithQuotes" : "Add quotes at the fields.",
+        "txtSeparator" : "Comma separated character.",
+        "txtPreview" : "Preview:",
+        "btnDoCancel" : "Cancel",
+        "btnDoDownload" : "Export",
+        "btnDownloadFile" : "Download file"
+    },
+    "samplePage" : {
+        "txtTitle" : "Directive to export CSV files.",
+        "txtDesc" : "Click to perform an export of the data in memory."
+    }
+}

@@ -1,0 +1,53 @@
+<div id="csv-export-directive" style="z-index: 99999">
+    <div id="mdl-export" class="modal fade" >
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title" translate>form.txtTitle</h4>
+                </div>
+                <div class="modal-body text-left">
+                    <div class="row">
+                        <form class="form-horizontal" role="form">
+                            <div class="row">
+                                <div class="col-sm-offset-1 col-sm-10">
+                                    <div class="form-group checkbox">
+                                        <label><input type="checkbox" ng-model="form.withLabels"><span translate>form.txtWithLabel</span></label>
+                                    </div>
+                                    <div class="form-group checkbox">
+                                        <label><input type="checkbox" ng-model="form.withQuotes"><span translate>form.txtWithQuotes</span></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">&nbsp;</div>
+                            <div class="row">
+                                <div class="col-sm-10">
+                                    <div class="form-group">
+                                        <label class="control-label col-sm-5" for="usuario" translate>form.txtSeparator</label>
+                                        <div class="col-sm-2">
+                                            <input type="text" class="form-control" id="usuario" ng-model="form.separator" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">&nbsp;</div>
+                            <div class="row">
+                                <div class="col-sm-offset-1 col-sm-10">
+                                    <div class="form-group">
+                                        <label for="preview" translate>form.txtPreview</label>
+                                        <textarea class="form-control" rows="5" id="preview" ng-model="form.csv"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal" translate>form.btnDoCancel</button>
+                    <button type="button" class="btn btn-default" ng-click="actions.doDownload()" translate>form.btnDoDownload</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button class="btn btn-primary btn-sm" ng-click="actions.showDialog()" translate>form.btnDownloadFile</button>
+</div>

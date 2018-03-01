@@ -1,0 +1,30 @@
+<md-dialog>
+  <form ng-cloak>
+    <md-toolbar>
+      <div class="md-toolbar-tools ">
+        <h2 class="poptitle">Confirmer les modifications</h2>
+        <span flex></span>
+        <md-button class="md-icon-button" ng-click="cancel()">
+          <md-icon md-font-icon="close"  ></md-icon>
+        </md-button>
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content">
+        <p>Voulez-vous appliquer les modifications ?</p>
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+
+      <span flex></span>
+      <md-button ng-click="confirm()">
+       Appliquer
+      </md-button>
+      <md-button ng-click="hide()">
+        Annuler
+      </md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>

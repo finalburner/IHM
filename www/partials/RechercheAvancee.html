@@ -1,0 +1,205 @@
+<div class="col" style="padding:0;;height:70vh!important">
+     <!-- <div id="grid1" ui-grid="gridOptions" class="grid"></div> -->
+<!-- <div class="row">
+  <md-select ng-model="selectedUser" multiple>
+       <md-option ng-value="user" ng-repeat="user in users">{{ user.name }}</md-option>
+   </md-select>
+</div> -->
+<div class="row" >
+
+  <div class="col" style="padding:0;">
+      <div class="row"  style="padding:0 20px 0 0;width:250px!important;margin:auto" >
+        <div ng-if="!filter.EQA_COLLECTIVITE.length" class="col col-80 titre_filtre">Collectivite</div>
+        <div ng-if="filter.EQA_COLLECTIVITE.length" class="col col-80 titre_filtre">Collectivite ({{filter.EQA_COLLECTIVITE.length}})</div>
+        <div class="col col-20" style="padding:2px 0 0 1px">
+           <md-checkbox ng-checked="Check.EQA_COLLECTIVITE" ng-click="CheckAll('Collectivite','EQA_COLLECTIVITE');" class="indigo" style="margin:0;">
+           </md-checkbox>
+         </div>
+      </div>
+      <div class="row" >
+          <ion-scroll style="height:200px!important;width:250px!important;margin:auto">
+            <ion-list >
+            <!-- <ion-item class="row" ng-if="GF.length == 0" style="padding:5px 0 5px 10px;font-size:14px" style="min-width:250px;"> -->
+              <!-- Sélectionnez un CT et une exception globale    </ion-item> -->
+            <ion-item class="row" style="padding:7px 0 8px 0;font-size:14px;" ng-repeat="item in FilterData.Collectivite">
+            <div class="col col-80" style="padding:0 0 0 10px;">{{::item.label}}</div>
+            <div class="col col-10" style="padding:0;width:20px;">
+
+              <md-checkbox ng-checked="item.C" ng-click="item.C=!item.C;checkfilter('EQA_COLLECTIVITE',item);" class="indigo" style="margin:0;"></md-checkbox>
+
+            </div>
+            </ion-item>
+
+          </ion-list>
+          </ion-scroll>
+       </div>
+  </div>
+
+  <div class="col" style="padding:0">
+      <div class="row"  style="padding:0 20px 0 0;width:250px!important;margin:auto" >
+        <div ng-if="!filter.EQA_SERVICE_GES.length" class="col col-80 titre_filtre">Service Gestionnaire</div>
+        <div ng-if="filter.EQA_SERVICE_GES.length" class="col col-80 titre_filtre">Service Gestionnaire ({{filter.EQA_SERVICE_GES.length}})</div>
+        <div class="col col-20" style="padding:2px 0 0 1px">
+           <md-checkbox ng-checked="Check.EQA_SERVICE_GES" ng-click="CheckAll('ServiceGestionnaire','EQA_SERVICE_GES')" class="indigo" style="margin:0;">
+           </md-checkbox>
+         </div>
+      </div>
+      <div class="row">
+          <ion-scroll style="height:200px!important;width:250px!important;margin:auto">
+            <ion-list >
+            <!-- <ion-item class="row" ng-if="GF.length == 0" style="padding:5px 0 5px 10px;font-size:14px" style="min-width:250px;"> -->
+              <!-- Sélectionnez un CT et une exception globale    </ion-item> -->
+            <ion-item class="row" style="padding:7px 0 8px 0;font-size:14px;" ng-repeat="item in FilterData.ServiceGestionnaire">
+            <div class="col col-80" style="padding:0 0 0 10px;">{{::item.label}}</div>
+            <div class="col col-10" style="padding:0;width:20px;">
+
+              <md-checkbox ng-checked="item.C" ng-click="item.C=!item.C;checkfilter('EQA_SERVICE_GES',item);" class="indigo" style="margin:0;"></md-checkbox>
+
+            </div>
+            </ion-item>
+
+          </ion-list>
+          </ion-scroll>
+       </div>
+  </div>
+
+  <div class="col" style="padding:0">
+      <div class="row"  style="padding:0 20px 0 0;width:250px!important;margin:auto" >
+        <div ng-if="!filter.EQA_SERVICE_FON.length" class="col col-80 titre_filtre">Service Fonctionnel</div>
+        <div ng-if="filter.EQA_SERVICE_FON.length" class="col col-80 titre_filtre">Service Fonctionnel ({{filter.EQA_SERVICE_FON.length}})</div>
+        <div class="col col-20" style="padding:2px 0 0 1px">
+           <md-checkbox ng-checked="Check.EQA_SERVICE_FON" ng-click="CheckAll('ServiceFonctionnel','EQA_SERVICE_FON')" class="indigo" style="margin:0;">
+           </md-checkbox>
+         </div>
+      </div>
+      <div class="row">
+          <ion-scroll style="height:200px!important;width:250px!important;margin:auto">
+            <ion-list >
+            <!-- <ion-item class="row" ng-if="GF.length == 0" style="padding:5px 0 5px 10px;font-size:14px" style="min-width:250px;"> -->
+              <!-- Sélectionnez un CT et une exception globale    </ion-item> -->
+            <ion-item class="row" style="padding:7px 0 8px 0;font-size:14px;" ng-repeat="item in FilterData.ServiceFonctionnel">
+            <div class="col col-80" style="padding:0 0 0 10px;">{{::item.label}}</div>
+            <div class="col col-10" style="padding:0;width:20px;">
+
+              <md-checkbox ng-checked="item.C" ng-click="item.C=!item.C;checkfilter('EQA_SERVICE_FON',item);" class="indigo" style="margin:0;"></md-checkbox>
+
+            </div>
+            </ion-item>
+
+          </ion-list>
+          </ion-scroll>
+       </div>
+  </div>
+
+  <div class="col" style="padding:0">
+      <div class="row"  style="padding:0 20px 0 0;width:250px!important;margin:auto" >
+        <div ng-if="!filter.STATUT_CT.length" class="col col-80 titre_filtre">Statut CT</div>
+        <div ng-if="filter.STATUT_CT.length" class="col col-80 titre_filtre">Statut CT ({{filter.STATUT_CT.length}})</div>
+        <div class="col col-20" style="padding:2px 0 0 1px">
+           <md-checkbox ng-checked="Check.STATUT_CT" ng-click="CheckAll('StatusCT','STATUT_CT')" class="indigo" style="margin:0;">
+           </md-checkbox>
+         </div>
+      </div>
+      <div class="row">
+          <ion-scroll style="height:200px!important;width:250px!important;margin:auto">
+            <ion-list >
+            <!-- <ion-item class="row" ng-if="GF.length == 0" style="padding:5px 0 5px 10px;font-size:14px" style="min-width:250px;"> -->
+              <!-- Sélectionnez un CT et une exception globale    </ion-item> -->
+            <ion-item class="row" style="padding:7px 0 8px 0;font-size:14px;" ng-repeat="item in FilterData.StatusCT">
+            <div class="col col-80" style="padding:0 0 0 10px;">{{::item.label}}</div>
+            <div class="col col-10" style="padding:0;width:20px;">
+
+              <md-checkbox ng-checked="item.C" ng-click="item.C=!item.C;checkfilter('STATUT_CT',item);" class="indigo" style="margin:0;"></md-checkbox>
+
+            </div>
+            </ion-item>
+
+          </ion-list>
+          </ion-scroll>
+       </div>
+  </div>
+  <div class="col" style="padding:0">
+      <div class="row"  style="padding:0 20px 0 0;width:250px!important;margin:auto" >
+        <div ng-if="!filter.STATUT_EQ.length" class="col col-80 titre_filtre">Statut Equipement</div>
+        <div ng-if="filter.STATUT_EQ.length" class="col col-80 titre_filtre">Statut Equipement ({{filter.STATUT_EQ.length}})</div>
+        <div class="col col-20" style="padding:2px 0 0 1px">
+           <md-checkbox ng-checked="Check.STATUT_EQ" ng-click="CheckAll('StatusEqpt','STATUT_EQ');" class="indigo" style="margin:0;">
+           </md-checkbox>
+         </div>
+      </div>
+      <div class="row">
+          <ion-scroll style="height:200px!important;width:250px!important;margin:auto">
+            <ion-list >
+            <!-- <ion-item class="row" ng-if="GF.length == 0" style="padding:5px 0 5px 10px;font-size:14px" style="min-width:250px;"> -->
+              <!-- Sélectionnez un CT et une exception globale    </ion-item> -->
+            <ion-item class="row" style="padding:7px 0 8px 0;font-size:14px;" ng-repeat="item in FilterData.StatusEqpt">
+            <div class="col col-80" style="padding:0 0 0 10px;">{{::item.label}}</div>
+            <div class="col col-10" style="padding:0;width:20px;">
+
+              <md-checkbox ng-checked="item.C" ng-click="item.C=!item.C;checkfilter('STATUT_EQ',item);" class="indigo" style="margin:0;"></md-checkbox>
+
+            </div>
+            </ion-item>
+
+          </ion-list>
+          </ion-scroll>
+       </div>
+  </div>
+</div>
+
+<!-- <div class="row" style="height:70px;font-size:12px" >
+
+  <div class="col">
+  <div ng-dropdown-multiselect="" options="ServiceGestionnaire" selected-model="ServiceGestionnaire_model"
+  extra-settings="ServiceGestionnaire_settings" events="events">
+  </div>
+  </div>
+
+  <div class="col">
+  <div ng-dropdown-multiselect="" options="ServiceFonctionnel" selected-model="ServiceFonctionnel_model"
+  extra-settings="ServiceFonctionnel_settings" events="events" ></div>
+  </div>
+  <div class="col">
+  <div ng-dropdown-multiselect="" options="StatusCT" selected-model="StatusCT_model"
+  extra-settings="StatusCT_settings"></div>
+  </div>
+  <div class="col">
+  <div ng-dropdown-multiselect="" options="StatusEqpt" selected-model="StatusEqpt_model"
+  extra-settings="StatusEqpt_settings"></div>
+  </div>
+  <div class="col">
+  <div ng-dropdown-multiselect="" options="Collectivite" selected-model="Collectivite_model"
+  extra-settings="Collectivite_settings"></div>
+  </div>
+
+</div> -->
+
+    <div class="row" style="padding-top:10px!important">
+            <div class="ag-fresh" ag-grid="gridOptions" style="min-height:500px!important;height:65vh;width:100vw!important;"></div>
+
+    </div>
+
+    <div class="row titre_filtre" style="padding-top:5px!important">
+      <div class="col" >
+        Nombre d'équipements affichés : {{filterdata_nb}}
+      </div>
+      <div class="col col-20" >
+      </div>
+      <div class="col" style="padding:0" >
+            <button class = "btn btn3" type = "button" ng-click='Cancel_Filter()'>Annuler les filtres</button>
+            <button class = "btn btn3" type = "button" ng-click='exportToCsv()'>Exporter CSV</button>
+            <button class = "btn btn3" type = "button" >Exporter PDF</button>
+
+      </div>
+
+
+
+    </div>
+
+</div>
+
+<!-- <div ng-dropdown-multiselect="" options="transclusionData" selected-model="transclusionModel" extra-settings="transclusionSettings">
+  <toggle-dropdown>
+  <span class="custom-trigger">My Custom trigger</span>
+</toggle-dropdown>
+</div> -->

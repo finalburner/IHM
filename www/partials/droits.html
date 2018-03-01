@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<!-- Meta-Information -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <meta charset="utf-8">
+    <title>IHM</title>
+    <meta name="description" content="Eiffage">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+</head>
+<body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+<script src="node_modules/angular1/es6/dev/src/testing/shims_for_IE.js"></script>
+<!-- <script src="node_modules/core-js/client/shim.min.js"></script> -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- Liste Opérateurs -->
+ <div class="container-flex" ng-controller="Liste" ng-init = "get_DroitsListe()">
+      <div class="col-sm-3">
+        <div class="panel panel-default flex-col">
+          <div class="panel-heading">Opérateurs</div>
+            <div class="panel-body">
+              <table class="table">
+                    <tbody>
+                      <tr ng-repeat = "item in DroitsListe">
+                        <td><a ng-href = "/#/profil/{{item.UTI_LOGIN}}" ng-click="$root.UTI_NOM = item.UTI_NOM">{{item.UTI_NOM}}</a></td>
+                      </tr>
+                    </tbody>
+              </table>
+            </div>
+        </div>
+      </div>
+</div> <!-- Fin container -->
+
+</body>
+</html>

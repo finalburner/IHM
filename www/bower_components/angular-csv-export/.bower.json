@@ -1,0 +1,46 @@
+{
+  "name": "angular-csv-export",
+  "version": "1.1.0",
+  "authors": [
+    "Robson Florentino <robson.florentino.silva@gmail.com>"
+  ],
+  "description": "Biblioteca angular para criar um arquivo de download com os dados baseados em um delimitador de campos",
+  "main": "src/csv-export-module.js",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "CSV, delimited, file, export, download"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "vendor",
+    "test"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.4.7",
+    "ng-translate": "*",
+    "angular-dynamic-locale": "~0.1.27",
+    "angular-translate": "~2.8.1",
+    "angular-cookies": "~1.4.7",
+    "angular-local-storage": "~0.2.2",
+    "bootstrap": "~3.3.5",
+    "angular-i18n": "~1.4.7",
+    "angular-translate-storage-cookie": "~2.8.1",
+    "angular-translate-loader-static-files": "~2.8.1"
+  },
+  "homepage": "https://github.com/robsonflorentino/angular-csv-export",
+  "_release": "1.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v1.1.0",
+    "commit": "3c2842a3b9f83c30b9faf16e6271b360b4899107"
+  },
+  "_source": "https://github.com/robsonflorentino/angular-csv-export.git",
+  "_target": "^1.1.0",
+  "_originalSource": "angular-csv-export",
+  "_direct": true
+}

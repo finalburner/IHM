@@ -1,0 +1,29 @@
+{
+  "name": "csv-utility",
+  "main": "./dist/csv-utility.min.js",
+  "version": "1.0.4",
+  "homepage": "https://github.com/eterna2/csv-utility",
+  "authors": [
+    "eterna2 <eterna2@hotmail.com>"
+  ],
+  "description": "A simple package to guess the separator and linebreak characters from a csv file.",
+  "moduleType": [
+    "amd",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "csv",
+    "separator",
+    "linebreak",
+    "delimitor"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

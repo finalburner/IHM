@@ -1,0 +1,39 @@
+{
+  "name": "angular-sql-query",
+  "description": "Make simple query on a SQLite database",
+  "version": "1.1.0",
+  "main": "angular-sql-query.js",
+  "authors": [
+    "Arnaud Spanneut <arnaud.spanneut@gmail.com>"
+  ],
+  "keywords": [
+    "angular",
+    "SQLite"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "*.spec.js",
+    "node_modules",
+    "bower_components",
+    "gulpfile.js"
+  ],
+  "devDependencies": {
+    "angular-mocks": "1.5.3",
+    "es5-shim": "~4.1.11"
+  },
+  "dependencies": {
+    "angular": "1.5.3"
+  },
+  "homepage": "https://github.com/SimpliField/angular-sql-query",
+  "_release": "1.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.1.0",
+    "commit": "86d5a5ae18456c9dacaf1986c78fe49037b13813"
+  },
+  "_source": "https://github.com/SimpliField/angular-sql-query.git",
+  "_target": "^1.1.0",
+  "_originalSource": "angular-sql-query",
+  "_direct": true
+}

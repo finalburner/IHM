@@ -1,0 +1,33 @@
+<div class="row" style="padding:0 !important"  >
+
+  <div class ="col col-20" style="background-color: #F7F7F7 !important;min-width:398px!important">
+
+    <div class="row titre_user">
+      Recherche Simple
+    </div>
+
+     <div class="row">
+
+     <label class="item item-input " style="width:100%;" >
+     <i class="icon ion-search placeholder-icon"></i>
+     <input style="height:15px;padding: 0 30px 0 0 ;" type="text" placeholder="Recherche"
+      ng-model="search"  ng-click="search =''"  ng-model-options="{ debounce: 100 }">
+     </label></div>
+
+     <div class="row" flex style="padding:10px 0 0 5px !important;background-color='#F7f7f7';"  >
+           <ion-content style="margin: 102px 0 0 0px;max-height:90vh!important;width:400px !important;" overflow-scroll="true" >
+
+                   <ion-list ng-if="tab">
+                     <div collection-repeat="item in tab | filter:search " style="min-width:400px!padding:0!important" item-height="40px"   >
+                       <div class="item row " ng-click="gotoFIC(item.CT)" >
+                          <div class="col " style="padding:5px 0 5px 10px;font-weight:500;">CT {{item.CT}} </div>
+                          <!-- <div class="col col-30"></div> -->
+                        </div>
+                      </div>
+                   </ion-list>
+
+          </ion-content>
+
+     </div>
+
+</div>

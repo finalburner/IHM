@@ -1,0 +1,43 @@
+<div class="row" style="padding:0" ng-init ="get_admin()" style="background-color:#FFFFFF!important">
+  <!-- <div class ="col col-20" style="background-color: #F7F7F7 !important;max-height:auto!important;" >
+    <div class="row">
+    <label class="item item-input " style="width:100%;" >
+    <i class="icon ion-search placeholder-icon"></i>
+    <input style="height:15px;padding: 0 30px 0 0 ;" type="text" placeholder="Recherche"
+     ng-model="search"  ng-click="search =''"  ng-model-options="{ debounce: 600 }">
+    </label></div>
+  </div> -->
+
+  <div class ="col " flex style="background-color: #F7F7F7 !important;display: inline-block;" >
+    <table class="table2" fixed-header style="border-collapse:collapse;height:90vh!important;overflow:scroll">
+
+      <thead>
+         <tr>
+           <th class="col_fon" >FONCTION</th>
+           <th class="col_pro" ng-repeat="pro in PROFILS.TAB | orderBy : '-UPR_ID' ">{{::pro.UPR_LBL}}</th>
+         </tr>
+       </thead>
+        <tbody >
+
+
+              <tr ng-repeat-start="(CAT,FCTS) in PROFIL_FONCTION track by $index" class="categories"
+                  ng-click="expand_CAT(CAT)" ng-class="!isItemExpanded(CAT) ? 'expand-itemct2' : 'expand-itemct'" on-finish-render="ngRepeatFinished">
+
+              <td colspan="1000" style="width=100%!important">
+                {{FONCTIONS_CAT[CAT]}}
+              <i class="icon " style="float:right;padding-right:20px" ng-class="isItemExpanded(CAT) ? 'ion-chevron-up' : 'ion-chevron-down'"></i>
+              </td>
+              </tr>
+
+              <tr  ng-if="!isItemExpanded(CAT)" ng-repeat-end ng-repeat="(Fct,PRO) in FCTS track by $index">
+                    <td class="row_fct_name">{{FONCTIONS[Fct]}}</td>
+                    <td  class="row_pro" ng-repeat="item in PRO | orderBy : '-PR_ID'" style="padding:5px;">
+                     <md-checkbox class="indigo" ng-checked= "item.V"
+                      style="margin: 10px 0 0 70px!important" ng-click="item.V = !item.V ; switch_pf(Fct,item.PR_COD,item.V,item.P)"></md-checkbox>
+                    </td>
+              </tr>
+       </tbody>
+      </table>
+  </div>
+
+</div>

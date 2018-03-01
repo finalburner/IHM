@@ -1,0 +1,108 @@
+<md-dialog  >
+  <form novalidate ng-cloak name="myForm">
+    <md-toolbar>
+      <div class="md-toolbar-tools">
+        <p class= "poptitle">Ajouter un utilisateur</p>
+        <span flex></span>
+        <!-- <md-button class="md-icon-button" >
+
+        </md-button> -->
+      </div>
+    </md-toolbar>
+
+    <md-dialog-content>
+      <div class="md-dialog-content" style="padding:0!important">
+
+    <div  class="col"  style="min-height: 340px;min-width: 600px;padding :0;" >
+      <!-- <input ng-model ="tmp_event.start._i"/> -->
+
+      <div class="row">
+        <div class="col col-33" style="padding: 27px 0 0 12px ;min-width:50px;font-size:16px">Utilisateur</div>
+        <div class="col" style="padding:20px 0 0 17px;font-weight:600;font-size:16px">
+        <select  ng-model="USER_TO_ADD.UTI_LOGIN"  style="width:300px!important" ng-change="New_User_Select()" >
+            <option ng-repeat="user in NEW_USER_LIST" value="{{user.UTI_LOGIN}}" >{{user.UTI_NOM}} {{user.UTI_PRENOM}}</option>
+        </select>
+        </div>
+      </div>
+
+
+    <div class="row">
+      <div class="col col-33" style="padding: 27px 0 0 12px ;min-width:50px;font-size:16px">Nom</div>
+      <!-- <input datetime-picker ng-model="model" /> -->
+      <div class="col" style="padding:20px 0 0 10px;font-weight:600;font-size:16px">
+        <!-- <input style="padding-left:5px;width:350px;" ng-model ="tmp_EG.nom"/> -->
+        <md-input-container style="padding-left:5px;width:350px;margin:0;">
+        <label>Nom</label>
+        <input required ng-model="USER_TO_ADD.UTI_NOM" required>
+      </md-input-container>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-33" style="padding: 8px 0 0 12px ;min-width:50px;font-size:16px">Prénom</div>
+      <!-- <input datetime-picker ng-model="model" /> -->
+      <div class="col" style="padding:0px 0 0 8px;font-weight:600;font-size:16px">
+          <!-- <input style="padding-left:5px;width:350px;" ng-model ="tmp_EG.description"/> -->
+          <md-input-container style="padding-left:5px;width:350px;margin:0;">
+          <label>Prénom</label>
+          <input ng-model="USER_TO_ADD.UTI_PRENOM" required>
+          </md-input-container>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-33" style="padding: 8px 0 0 12px ;min-width:50px;font-size:16px">Email</div>
+      <!-- <input datetime-picker ng-model="model" /> -->
+      <div class="col" style="padding:0px 0 0 8px;font-weight:600;font-size:16px">
+          <!-- <input style="padding-left:5px;width:350px;" ng-model ="tmp_EG.description"/> -->
+          <md-input-container style="padding-left:5px;width:350px;margin:0;">
+          <label>Email</label>
+          <input ng-model="USER_TO_ADD.UTI_MAIL" ng-pattern="/^.+@.+\..+$/" required>
+          </md-input-container>
+        </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-33" style="padding: 8px 0 0 12px ;min-width:50px;font-size:16px">Profil</div>
+      <div class="col" style="padding:5px 0 0 17px;font-weight:600;font-size:16px">
+      <select convert-to-number ng-model="USER_TO_ADD.UTI_UPR_ID"  style="width:300px!important" required>
+          <option ng-repeat="pro in Profil" value="{{pro.UPR_ID}}">{{pro.UPR_LBL}}</option>
+      </select>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-33" style="padding: 27px 0 0 12px ;min-width:50px;font-size:16px">Habilité à l'astreinte</div>
+      <div class="col" style="padding:27px 0 0 17px;font-weight:600;font-size:16px">
+        <md-checkbox ng-model="USER_TO_ADD.UTI_HAB_ASTREINTE"  class="indigo" style="margin:0;"></md-checkbox>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col col-33" style="padding: 27px 0 0 12px ;min-width:50px;font-size:16px">Actif</div>
+      <div class="col" style="padding:27px 0 0 17px;font-weight:600;font-size:16px">
+        <md-checkbox ng-model="USER_TO_ADD.UTI_ACTIF" class="indigo" style="margin:0;"></md-checkbox>
+      </div>
+    </div>
+
+     <div class="row">
+
+     </div>
+
+
+        </div>
+
+
+      </div>
+    </md-dialog-content>
+
+    <md-dialog-actions layout="row">
+      <!-- <md-button ng target="_blank" md-autofocus>
+        More on Wikipedia
+      </md-button> -->
+      <span flex></span>
+      <md-button ng-click="close_popup()">Annuler</md-button>
+      <md-button ng-click="apply_add_new_user()" md-autofocus ng-disabled="myForm.$invalid || !USER_TO_ADD.UTI_UPR_ID">Ajouter</md-button>
+    </md-dialog-actions>
+  </form>
+</md-dialog>
