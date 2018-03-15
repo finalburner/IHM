@@ -37,10 +37,10 @@
 
   <div class="col" style="padding:0">
       <div class="row"  style="padding:0 20px 0 0;width:250px!important;margin:auto" >
-        <div ng-if="!filter.EQA_SERVICE_GES.length" class="col col-80 titre_filtre">Service Gestionnaire</div>
-        <div ng-if="filter.EQA_SERVICE_GES.length" class="col col-80 titre_filtre">Service Gestionnaire ({{filter.EQA_SERVICE_GES.length}})</div>
+        <div ng-if="!filter.EQA_SERVICE_GES_COD.length" class="col col-80 titre_filtre">Service Gestionnaire</div>
+        <div ng-if="filter.EQA_SERVICE_GES_COD.length" class="col col-80 titre_filtre">Service Gestionnaire ({{filter.EQA_SERVICE_GES_COD.length}})</div>
         <div class="col col-20" style="padding:2px 0 0 1px">
-           <md-checkbox ng-checked="Check.EQA_SERVICE_GES" ng-click="CheckAll('ServiceGestionnaire','EQA_SERVICE_GES')" class="indigo" style="margin:0;">
+           <md-checkbox ng-checked="Check.EQA_SERVICE_GES_COD" ng-click="CheckAll('ServiceGestionnaire','EQA_SERVICE_GES_COD')" class="indigo" style="margin:0;">
            </md-checkbox>
          </div>
       </div>
@@ -53,7 +53,7 @@
             <div class="col col-80" style="padding:0 0 0 10px;">{{::item.label}}</div>
             <div class="col col-10" style="padding:0;width:20px;">
 
-              <md-checkbox ng-checked="item.C" ng-click="item.C=!item.C;checkfilter('EQA_SERVICE_GES',item);" class="indigo" style="margin:0;"></md-checkbox>
+              <md-checkbox ng-checked="item.C" ng-click="item.C=!item.C;checkfilter('EQA_SERVICE_GES_COD',item);" class="indigo" style="margin:0;"></md-checkbox>
 
             </div>
             </ion-item>
@@ -65,10 +65,10 @@
 
   <div class="col" style="padding:0">
       <div class="row"  style="padding:0 20px 0 0;width:250px!important;margin:auto" >
-        <div ng-if="!filter.EQA_SERVICE_FON.length" class="col col-80 titre_filtre">Service Fonctionnel</div>
-        <div ng-if="filter.EQA_SERVICE_FON.length" class="col col-80 titre_filtre">Service Fonctionnel ({{filter.EQA_SERVICE_FON.length}})</div>
+        <div ng-if="!filter.EQA_SERVICE_FON_COD.length" class="col col-80 titre_filtre">Service Fonctionnel</div>
+        <div ng-if="filter.EQA_SERVICE_FON_COD.length" class="col col-80 titre_filtre">Service Fonctionnel ({{filter.EQA_SERVICE_FON_COD.length}})</div>
         <div class="col col-20" style="padding:2px 0 0 1px">
-           <md-checkbox ng-checked="Check.EQA_SERVICE_FON" ng-click="CheckAll('ServiceFonctionnel','EQA_SERVICE_FON')" class="indigo" style="margin:0;">
+           <md-checkbox ng-checked="Check.EQA_SERVICE_FON_COD" ng-click="CheckAll('ServiceFonctionnel','EQA_SERVICE_FON_COD')" class="indigo" style="margin:0;">
            </md-checkbox>
          </div>
       </div>
@@ -81,7 +81,7 @@
             <div class="col col-80" style="padding:0 0 0 10px;">{{::item.label}}</div>
             <div class="col col-10" style="padding:0;width:20px;">
 
-              <md-checkbox ng-checked="item.C" ng-click="item.C=!item.C;checkfilter('EQA_SERVICE_FON',item);" class="indigo" style="margin:0;"></md-checkbox>
+              <md-checkbox ng-checked="item.C" ng-click="item.C=!item.C;checkfilter('EQA_SERVICE_FON_COD',item);" class="indigo" style="margin:0;"></md-checkbox>
 
             </div>
             </ion-item>

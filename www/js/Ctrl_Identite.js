@@ -5,7 +5,7 @@ app.controller('Identite', function ($state, $timeout, notify, $ionicLoading, i1
   //             $('#sidebar').toggleClass('visible');
   //         });
   //     });
-  
+
   $scope.showSeachBar = function()
   {
       $('#sidebar').toggleClass('visible');
@@ -422,7 +422,7 @@ app.controller('Identite', function ($state, $timeout, notify, $ionicLoading, i1
         else $scope.s1 = ""
         if (data.CTH_COM_AUTEUR_NOM) $scope.s2 = " > "
         else $scope.s2 = ""
-
+        loading_screen.finish()
         $ionicLoading.hide() //enleve le spinner
 
               })
@@ -508,10 +508,10 @@ app.controller('Identite', function ($state, $timeout, notify, $ionicLoading, i1
              if (obj && obj.CTH_NUM_CT)
              data2.push(obj)
            })
-           // console.log(data2)
+           console.log(data2)
            $scope.tab = data2
 
-           loading_screen.finish()
+
        }).error(function(data) {
            console.log(data);
        });

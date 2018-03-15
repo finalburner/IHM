@@ -1,6 +1,6 @@
 "use strict";
 var compression = require('compression')
-const Version = '1.3.10'
+const Version = '1.3.11'
 console.log("IHM version : " + Version )
 const sql = require('mssql');
 const P = require(process.cwd() + '/config.ini')

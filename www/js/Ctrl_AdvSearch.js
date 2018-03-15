@@ -63,14 +63,16 @@ app.controller('AdvSearch', function ($scope, $http, $stateParams, $ionicLoading
 
      $http.get('/api/Service_Gestionnaire')
           .success(function(data) {
-                $scope.FilterData.ServiceGestionnaire = transformJson(data,'EQP_SERVICE_GES','EQP_SERVICE_GES_COD')
+            console.log(data)
+                $scope.FilterData.ServiceGestionnaire = transformJson(data,'EQP_SERVICE_GES_COD','EQP_SERVICE_GES')
+                console.log($scope.FilterData.ServiceGestionnaire)
           }).error(function(data) {
                 console.log('Error: ' + data);
           });
 
      $http.get('/api/Service_Fonctionnel')
           .success(function(data) {
-                 $scope.FilterData.ServiceFonctionnel = transformJson(data,'EQP_SERVICE_FON','EQP_SERVICE_FON_COD')
+                 $scope.FilterData.ServiceFonctionnel = transformJson(data,'EQP_SERVICE_FON_COD','EQP_SERVICE_FON')
           }).error(function(data) {
                 console.log('Error: ' + data);
           });
@@ -130,6 +132,8 @@ app.controller('AdvSearch', function ($scope, $http, $stateParams, $ionicLoading
 
      $scope.checkfilter = function(cat,item)
      {
+       console.log(cat)
+       console.log(item)
        if(item.C)
        {
          $scope.filter[cat].push(item.COD)
@@ -204,8 +208,8 @@ app.controller('AdvSearch', function ($scope, $http, $stateParams, $ionicLoading
      }
 
      $scope.filter = {
-             EQA_SERVICE_FON : [],
-             EQA_SERVICE_GES : [],
+             EQA_SERVICE_FON_COD : [],
+             EQA_SERVICE_GES_COD : [],
              EQA_COLLECTIVITE : [],
              STATUT_EQ :[],
              STATUT_CT : []
@@ -213,8 +217,8 @@ app.controller('AdvSearch', function ($scope, $http, $stateParams, $ionicLoading
          };
 
      $scope.Check = {
-             EQA_SERVICE_FON : false,
-             EQA_SERVICE_GES : false,
+             EQA_SERVICE_FON_COD : false,
+             EQA_SERVICE_GES_COD : false,
              EQA_COLLECTIVITE : false,
              STATUT_EQ : false,
              STATUT_CT : false
@@ -238,9 +242,11 @@ app.controller('AdvSearch', function ($scope, $http, $stateParams, $ionicLoading
        {headerName: "Type EQ", field: "EQA_TYPE"},
        {headerName: "EQA_SERVICE_FON", field: "EQA_SERVICE_FON", hide: false},
        {headerName: "EQA_SERVICE_GES", field: "EQA_SERVICE_GES", hide: false},
+       {headerName: "EQA_SERVICE_FON_COD", field: "EQA_SERVICE_FON_COD", hide: true},
+       {headerName: "EQA_SERVICE_GES_COD", field: "EQA_SERVICE_GES_COD", hide: true},
        {headerName: "Statut du CT", field: "STATUT_CT", hide: false},
        {headerName: "Statut Eqpt.", field: "STATUT_EQ", hide: false},
-       {headerName: "Collectivite", field: "EQA_COLLECTIVITE", hide: true}
+       {headerName: "Collectivite", field: "EQA_COLLECTIVITE", hide: false}
    ];
 
    $scope.gridOptions = {
